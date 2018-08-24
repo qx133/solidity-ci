@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-import "./MyERC20.sol";
+import "../contracts/MyERC20.sol";
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 
