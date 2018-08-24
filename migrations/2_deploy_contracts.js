@@ -1,5 +1,5 @@
-var helloworld = artifacts.require("./helloworld.sol");
+var burnabletoken = artifacts.require("./BurnableToken.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(helloworld);
+  deployer.deploy(burnabletoken);
  };
