@@ -1,5 +1,5 @@
-var helloworld = artifacts.require("./helloworld.sol");
+var MyERC20 = artifacts.require("./MyERC20.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(helloworld);
+  deployer.deploy(MyERC20);
 };
