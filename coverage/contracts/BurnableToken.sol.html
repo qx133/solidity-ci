@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for contracts/helloworld.sol</title>
+    <title>Code coverage report for contracts/BurnableToken.sol</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> helloworld.sol
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> BurnableToken.sol
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -70,7 +70,29 @@
 25
 26
 27
-28</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -87,44 +109,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.4.19;
 &nbsp;
-contract Mortal {
-    /* Define variable owner of the type address */
-    address public owner;
+import "./StandardToken.sol";
 &nbsp;
-    /* This function is executed at initialization and sets the owner of the contract */
-<span class="fstat-no" title="function not covered" >    constructor () publi</span>c {
-<span class="cstat-no" title="statement not covered" >        owner = msg.sender</span>;
-    }
+&nbsp;
+/**
+ * @title Burnable Token
+ * @dev Token that can be irreversibly burned (destroyed).
+ */
+contract BurnableToken is StandardToken {
+&nbsp;
+  event Burn(address indexed burner, uint256 value);
+&nbsp;
+  /**
+   * @dev Burns a specific amount of tokens.
+   * @param _value The amount of token to be burned.
+   */
+<span class="fstat-no" title="function not covered" >  function burn(uint256 _value) public </span>{
+<span class="cstat-no" title="statement not covered" >    _burn(msg.sender, _value)</span>;
+  }
+&nbsp;
+  /**
+   * @dev Burns a specific amount of tokens from the target address and decrements allowance
+   * @param _from address The address which you want to send tokens from
+   * @param _value uint256 The amount of token to be burned
+   */
+<span class="fstat-no" title="function not covered" >  function burnFrom(address _from, uint256 _value) public </span>{
+<span class="cstat-no" title="statement not covered" >    _burnFrom(_from, _value)</span>;
+  }
+&nbsp;
+  /**
+   * @dev Overrides StandardToken._burn in order for burn and burnFrom to emit
+   * an additional Burn event.
+   */
+<span class="fstat-no" title="function not covered" >  function _burn(address _who, uint256 _value) internal </span>{
+    super._burn(_who, _value);
+<span class="cstat-no" title="statement not covered" >    emit Burn(_who, _value);</span>
+  }
 }
-&nbsp;
-contract helloworld is Mortal {
-    /* Define variable greeting of the type string */
-    string public greeting;
-    uint256 public count;
-&nbsp;
-    /* This runs when the contract is executed */
-<span class="fstat-no" title="function not covered" >    constructor () publi</span>c {
-<span class="cstat-no" title="statement not covered" >        greeting = "hello world"</span>;
-    }
-&nbsp;
-    /* Main function */
-<span class="fstat-no" title="function not covered" >    function greet() public returns (string</span>) {
-        count++;
-<span class="cstat-no" title="statement not covered" >        return greeting;</span>
-    }
-}</pre></td></tr>
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
